@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import './Weather.css';
 import axios from 'axios';
 import FormattedDate from "./FormattedDate";
+import WeatherSearch from "./WeatherSearch";
+
+const apiKey = "3c949ba49d38be2487ee278e0d2d4059";
 
 export default function Weather() {
 
     const [weatherData, setWeatherData] = useState({ ready: false });
+    const [city, setCity] = useState('');
 
     function handleResponse(response) {
         setWeatherData({
@@ -19,66 +23,73 @@ export default function Weather() {
             iconUrl: "https://ssl.gstatic.com/onebox/weather/64/cloudy.png",
             date: new Date(response.data.dt * 1000)
         });
-
     }
 
 
+    function handleSubmit(event) {
+        event.preventDefault();
+        //Reset city state variable to an empty string for WeatherSearch's input
+        setCity('');
+
+        //Get city name value from event object
+        const cityName = event.target[0].value;
+        //Use city name value from event, as an url param for new request.
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
+        axios.get(apiUrl).then(handleResponse)
+    }
+
+    function handleCityChange(event) {
+        setCity(event.target.value);
+    }
+
     if (weatherData.ready) {
-        return (<div className="Weather">
-            <div className="container">
-                <div className="weather-border">
-                    <h1 id='city'>{weatherData.city}</h1>
-                    <div className="d-flex weather-temperature">
-                        <img src={weatherData.iconUrl} id="icon" align="left" alt="" />
-                        <h2 id="temp-display">{weatherData.temperature}°F</h2>
+        return (
+            <div className="Weather">
+                <div className="container">
+                    <div className="weather-border">
+                        <h1 id='city'>{weatherData.city}</h1>
+                        <div className="d-flex weather-temperature">
+                            <img src={weatherData.iconUrl} id="icon" align="left" alt="" />
+                            <h2 id="temp-display">{weatherData.temperature}°F</h2>
 
-                    </div>
-                    <ul>
-                        <li id="date"><FormattedDate date={weatherData.date} /></li>
-                        <li id="description" className="text-capitalize">{weatherData.description}</li>
-                    </ul>
-                    <form>
-                        <div className="row">
-                            <div className="col-9">
-                                <input type="text" id="city-search" placeholder="Search for a new city" autocomplete="off" className="form-control" />
-                            </div>
-                            <div className="col-3">
-                                <input type="submit" className="btn btn-primary" id="search-button" value="search" />
-                            </div>
                         </div>
-                    </form>
+                        <ul>
+                            <li id="date"><FormattedDate date={weatherData.date} /></li>
+                            <li id="description" className="text-capitalize">{weatherData.description}</li>
+                        </ul>
+                        <WeatherSearch
+                            city={city}
+                            handleSubmit={handleSubmit}
+                            handleCityChange={handleCityChange} />
+                        <div className="percentage-table">
+                            <div className="row even-space">
+                                <div className="col-2">Humidity</div>
+                                <div className="col-2">Feels like</div>
+                                <div className="col-2">Wind</div>
+                            </div>
+                            <div className="row even-space">
+                                <div className="col-2"><span id="humidity"></span>{weatherData.humidity}%</div>
+                                <div className="col-2"><span id="feels-like"></span>{weatherData.feelsLike}°F</div>
+                                <div className="col-2"><span id="wind"></span>{weatherData.wind} mph</div>
+                            </div>
 
-                    <div className="percentage-table">
-                        <div className="row even-space">
-                            <div className="col-2">Humidity</div>
-                            <div className="col-2">Feels like</div>
-                            <div className="col-2">Wind</div>
-                        </div>
-                        <div className="row even-space">
-                            <div className="col-2"><span id="humidity"></span>{weatherData.humidity}%</div>
-                            <div className="col-2"><span id="feels-like"></span>{weatherData.feelsLike}°F</div>
-                            <div className="col-2"><span id="wind"></span>{weatherData.wind} mph</div>
                         </div>
 
                     </div>
-                </div>
-                {/* <div class="weekly-border">
+                    {/* <div class="weekly-border">
                     <div class="weekly-forecast" id="forecast"></div>
                 </div> */}
-                <small class="repo">
-                    Open Source Repository
-                    <a href="https://github.com/shel-brya" target="_blank" rel="noreferrer">here</a>
-                </small>
+                    <small class="repo">
+                        Open Source Repository
+                        <a href="https://github.com/shel-brya" target="_blank" rel="noreferrer">here</a>
+                    </small>
+                </div>
             </div>
-        </div>
         )
     } else {
-        const apiKey = "3c949ba49d38be2487ee278e0d2d4059";
-        let city = "Bloomington";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Bloomington&appid=${apiKey}&units=imperial`;
         axios.get(apiUrl).then(handleResponse)
         return ("Loading...")
     }
-
-
 }
