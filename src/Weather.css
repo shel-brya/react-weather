@@ -37,7 +37,7 @@ ul {
   background-color: #dfd3c3;
 }
 
-.weather-temperature img {
+#icon {
   margin-right: 10px;
   height: 66px;
   width: 66px;
