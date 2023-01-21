@@ -85,7 +85,7 @@ export default function Weather() {
                 </div> */}
                     <small class="repo">
                         Open Source Repository
-                        <a href="https://github.com/shel-brya" target="_blank" rel="noreferrer">here</a>
+                        <a href="https://github.com/shel-brya" target="_blank" rel="noopener noreferrer">here</a>
                     </small>
                 </div>
             </div>
