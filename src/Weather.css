@@ -1,0 +1,124 @@
+h1 {
+  text-align: left;
+
+  font-size: 50px;
+}
+
+h2 {
+
+  font-size: 50px;
+
+  text-align: left;
+}
+
+
+
+
+body {
+  color: #f0ece2;
+}
+
+.container {
+  color: #596e79;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  font-size: 20px;
+}
+
+.weather-border {
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+  background-color: #dfd3c3;
+}
+
+#icon {
+  margin-right: 10px;
+  height: 66px;
+  width: 66px;
+
+}
+
+
+#farh {
+  text-decoration: none;
+}
+
+#celsius {
+  text-decoration: none;
+}
+
+/* .col-9 {
+  width: 75%;
+}
+
+.col-3 {
+  width: 25%;
+} */
+
+#city-search {
+  /* padding: 15px 20px; */
+  display: inline-block;
+  font-size: 16px;
+  height: 50px;
+  line-height: 20px;
+}
+
+#search-button {
+  padding: 15px 15px;
+  font-size: 16px;
+  background-color: #596e79;
+  border: none;
+}
+
+.percentage-table {
+  border: 1px solid #dadde1;
+  padding: 5px 5px;
+  margin: 20px 0px 20px 0px;
+  background-color: #c7b198;
+}
+
+.weekly-border {
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+  background-color: #dfd3c3;
+}
+
+.weekly-forecast {
+  text-align: center;
+}
+
+.weekly-forecast-date {
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.weekly-low {
+  opacity: 0.6;
+}
+
+.weekly-forecast-temp {
+  font-size: 14px;
+}
+
+a {
+  color: #596e79;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #719192;
+  text-decoration: underline;
+}
+
+.even-space {
+  display: flex;
+  justify-content: space-evenly;
+}
