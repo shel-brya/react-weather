@@ -95,6 +95,11 @@ ul {
 
 .weekly-low {
   opacity: 0.6;
+  padding-left: 3px;
+}
+
+.weekly-high {
+  padding-right: 3px;
 }
 
 .weekly-forecast-temp {

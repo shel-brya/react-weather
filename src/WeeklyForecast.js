@@ -16,9 +16,17 @@ export default function WeeklyForecast(props) {
             <div className="weekly-border">
                 <div className="weekly-forecast" id="forecast">
                     <div className="row">
-                        <div className="col-2">
-                            <WeeklyForecastDay forecast={forecast[0]} />
-                        </div>
+                        {forecast.map(function (dailyForecast, index) {
+
+                            if (index < 6) {
+
+                                return (
+                                    <div className="col-2" key={index}>
+                                        <WeeklyForecastDay forecast={dailyForecast} />
+                                    </div>
+                                );
+                            }
+                        })}
                     </div>
                 </div>
             </div>
