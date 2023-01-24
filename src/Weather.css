@@ -11,7 +11,15 @@ h2 {
   text-align: left;
 }
 
+.github-link,
+.linkedIn-link {
+  text-decoration: underline;
+}
 
+.center-me {
+  display: flex;
+  justify-content: center;
+}
 
 
 body {
@@ -53,16 +61,8 @@ ul {
   text-decoration: none;
 }
 
-/* .col-9 {
-  width: 75%;
-}
-
-.col-3 {
-  width: 25%;
-} */
 
 #city-search {
-  /* padding: 15px 20px; */
   display: inline-block;
   font-size: 16px;
   height: 50px;
@@ -102,6 +102,11 @@ ul {
 
 .weekly-low {
   opacity: 0.6;
+  padding-left: 3px;
+}
+
+.weekly-high {
+  padding-right: 3px;
 }
 
 .weekly-forecast-temp {
@@ -121,4 +126,17 @@ a:hover {
 .even-space {
   display: flex;
   justify-content: space-evenly;
+}
+
+
+#humidity {
+  padding-left: 28px;
+}
+
+#feels-like {
+  padding-left: 35px;
+}
+
+#wind {
+  padding-left: 25px;
 }
