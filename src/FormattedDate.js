@@ -15,6 +15,8 @@ export default function FormattedDate(props) {
         mins = `0${mins}`;
     }
 
+    hours = (hours % 12) || 12;
+
     return (
         <div>{day} {hours}:{mins}</div>
     );

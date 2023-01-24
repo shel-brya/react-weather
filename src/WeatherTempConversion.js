@@ -17,7 +17,8 @@ export default function WeatherTempConversion(props) {
         return (
             <div className="TempConversion">
                 <div className="d-flex">
-                    <h2 id="temp-display">{props.temp}°F | <a href="/" onClick={convertCelsius}>°C</a></h2>
+                    <h2 id="temp-display">{props.temp}</h2>
+                    <span>°F | <a href="/" onClick={convertCelsius}>°C</a></span>
                 </div>
             </div>
         )
@@ -26,7 +27,8 @@ export default function WeatherTempConversion(props) {
         return (
             <div className="TempConversion">
                 <div className="d-flex">
-                    <h2 id="temp-display">{celsius}<a href="/" onClick={convertFahrenheit}>°F </a>| °C</h2>
+                    <h2 id="temp-display">{celsius}</h2>
+                    <span><a href="/" onClick={convertFahrenheit}>°F </a> | °C</span>
                 </div>
             </div>
         );

@@ -67,13 +67,13 @@ export default function Weather() {
                         <div className="percentage-table">
                             <div className="row even-space">
                                 <div className="col-2">Humidity</div>
-                                <div className="col-2">Feels like</div>
-                                <div className="col-2">Wind</div>
+                                <div className="col-2">Feels Like</div>
+                                <div className="col-2">Wind Speed</div>
                             </div>
                             <div className="row even-space">
-                                <div className="col-2"><span id="humidity"></span>{weatherData.humidity}%</div>
-                                <div className="col-2"><span id="feels-like"></span>{weatherData.feelsLike}°F</div>
-                                <div className="col-2"><span id="wind"></span>{weatherData.wind} mph</div>
+                                <div className="col-2" id="humidity">{weatherData.humidity}%</div>
+                                <div className="col-2" id="feels-like">{weatherData.feelsLike}°F</div>
+                                <div className="col-2" id="wind">{weatherData.wind} mph</div>
                             </div>
 
                         </div>
@@ -82,10 +82,13 @@ export default function Weather() {
                     <WeeklyForecast
                         coordinates={weatherData.coordinates}
                         apiKey={apiKey} />
-                    <small class="repo">
-                        Open Source Repository
-                        <a href="https://github.com/shel-brya" target="_blank" rel="noopener noreferrer">here</a>
-                    </small>
+                    <div className="center-me">
+                        <small>
+                            Open Source Repository <a href="https://github.com/shel-brya"
+                                target="_blank" rel="noopener noreferrer"
+                                className="github-link">here</a> made by <a href="https://www.linkedin.com/in/shelby-bryant-5aa5691b9/" className="linkedIn-link">Shelby Bryant</a> 🤠
+                        </small>
+                    </div>
                 </div>
             </div>
         )
