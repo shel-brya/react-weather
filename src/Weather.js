@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import './Weather.css';
 import axios from 'axios';
 import FormattedDate from "./FormattedDate";
 import WeatherSearch from "./WeatherSearch";
 import WeatherTempConversion from "./WeatherTempConversion";
+import WeeklyForecast from "./WeeklyForecast";
 
 const apiKey = "3c949ba49d38be2487ee278e0d2d4059";
 
@@ -13,6 +13,7 @@ export default function Weather() {
     const [city, setCity] = useState('');
 
     function handleResponse(response) {
+        console.log('response', response);
         setWeatherData({
             ready: true,
             temperature: Math.round(response.data.main.temp),
@@ -22,7 +23,8 @@ export default function Weather() {
             humidity: response.data.main.humidity,
             description: response.data.weather[0].main,
             iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-            date: new Date(response.data.dt * 1000)
+            date: new Date(response.data.dt * 1000),
+            coordinates: response.data.coord
         });
     }
 
@@ -53,10 +55,7 @@ export default function Weather() {
                         <div className="d-flex">
                             <img src={weatherData.iconUrl} id="icon" align="left" alt="" />
                         </div>
-                        {/* <div className="d-flex weather-temperature">
-                            <img src={weatherData.iconUrl} id="icon" align="left" alt="" />
-                            <h2 id="temp-display">{weatherData.temperature}°F</h2>
-                        </div> */}
+
                         <ul>
                             <li id="date"><FormattedDate date={weatherData.date} /></li>
                             <li id="description" className="text-capitalize">{weatherData.description}</li>
@@ -80,9 +79,9 @@ export default function Weather() {
                         </div>
 
                     </div>
-                    {/* <div class="weekly-border">
-                    <div class="weekly-forecast" id="forecast"></div>
-                </div> */}
+                    <WeeklyForecast
+                        coordinates={weatherData.coordinates}
+                        apiKey={apiKey} />
                     <small class="repo">
                         Open Source Repository
                         <a href="https://github.com/shel-brya" target="_blank" rel="noopener noreferrer">here</a>
